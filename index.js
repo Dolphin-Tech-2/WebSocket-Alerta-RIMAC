@@ -24,7 +24,7 @@ app.use(
 async function generateEvent() {
   let event = await getRandomEvent();
   event.fecha = new Date().toString();
-  event.gemini_output = await postChatbot("Hola");
+  event.gemini_output = await postChatbot(`Soy un usuario de la aplicación Rimac Seguros y deseo que la app me brinde de una forma breve pero conscisa la información de algun evento que ocurra.Eres un experto en resumenes de eventos con más de 20 años de experiencia, para aplicaciones de alertas. Tu deber será en base a un evento dado brindar un resumen del evento para que el usuario de la app sepa del evento que ha ocurrido el resumen no debe pasar de las 3 lineas. Utilize un tono amigable sin dejar de lado la formalidad, todo esto es confin de cuidar el bienestar del usuario. Como punto extra podria brindar algunas recomendaciones para que el usuario se encuentre seguro. No exceda de los 65 caracteres. El evento es : ${event.latitud} ${event.longitud} ${event.tipo}`);
   console.log(event);
   await postEvent(event);
   return event;
